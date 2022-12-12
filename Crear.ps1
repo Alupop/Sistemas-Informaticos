@@ -7,7 +7,7 @@ foreach ($group in $file_groups) {
 
 foreach ($user in $file_users) {
   $clave=ConvertTo-secureString $user.Password -AsPlainText -Force
-  New-LocalUser $user.cuenta -Password $clave -FullName $user.nombre_apellido -AccountNeverExpires  
+  New-LocalUser $user.Cuenta -Password $clave -FullName $user.Nombre_apellido -AccountNeverExpires  
   Set-LocalUser $user.Password -PasswordNeverExpires $false
   net user $user.Password /logonpasswordchg:yes
   Add-LocalGroupMember -Group $user.Departamentos -Member $user.Password
